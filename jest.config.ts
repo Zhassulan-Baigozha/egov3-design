@@ -18,7 +18,6 @@ const customJestConfig = {
   testEnvironment: 'jsdom',
   moduleNameMapper: {
     '@/(.*)': '<rootDir>/$1',
-    '~app/(.*)': '<rootDir>/src/app/$1',
     '~constants/(.*)': '<rootDir>/src/constants/$1',
     '~customHooks/(.*)': '<rootDir>/src/customHooks/$1',
     '~customMock/(.*)': '<rootDir>/__tests__/customMock/$1',

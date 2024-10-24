@@ -23,7 +23,8 @@
     ],
     "paths": {
       "~utils/*": ["./src/utils/*"],
-      "~baseComponents": ["./src/baseComponents/index"]
+      "~baseComponents": ["./src/baseComponents/index"],
+      "~svg": ["./src/svg/index"]
     }
   },
   "include": [

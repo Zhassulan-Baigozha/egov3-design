@@ -34,7 +34,11 @@ const customJestConfig = {
       lines: 40,
       statements: 40
     }
-  }
+  },
+  transform: {
+    '^.+\\.(ts|tsx)$': 'ts-jest',
+  },
+  transformIgnorePatterns: ['/node_modules/'],
 };
 
 export default createJestConfig(customJestConfig);

@@ -1,3 +1,3 @@
-import { Button } from "src/baseComponents/Button";
+import { InputField } from "src/baseComponents/InputField";
 
-export { Button };
+export { InputField };

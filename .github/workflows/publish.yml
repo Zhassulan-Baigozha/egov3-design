@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: "20"
           registry-url: "https://registry.npmjs.org/"
@@ -24,9 +24,19 @@ jobs:
 
       - name: Increment version
         run: |
-          CURRENT_VERSION=$(jq -r '.version' package.json)
-          echo "Current version is $CURRENT_VERSION"
           yarn version --patch --no-git-tag-version
+
+      - name: Check PERSONAL_TOKEN
+        run: |
+          echo "Token starts with: ${PERSONAL_TOKEN:0:4}... and ends with ...${PERSONAL_TOKEN: -4}"
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Test git connection
+        run: |
+          git ls-remote https://Zhassulan-Baigozha:${{ secrets.PERSONAL_TOKEN }}@github.com/Zhassulan-Baigozha/egov3-design.git
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
       - name: Commit updated package.json
         run: |

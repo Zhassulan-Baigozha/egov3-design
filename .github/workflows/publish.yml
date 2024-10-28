@@ -26,7 +26,14 @@ jobs:
         run: yarn install
 
       - name: Increment version
-        run: yarn version --patch --no-git-tag-version
+        run: |
+          yarn version --patch --no-git-tag-version
+
+      - name: Check PERSONAL_TOKEN
+        run: |
+          echo "Token starts with: ${PERSONAL_TOKEN:0:4}... and ends with ...${PERSONAL_TOKEN: -4}"
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
       - name: Test git connection
         run: |
@@ -41,8 +48,6 @@ jobs:
           git add package.json
           git commit -m "ci: bump version to $(jq -r '.version' package.json)"
           git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/Zhassulan-Baigozha/egov3-design.git main
-        env:
-          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
       - name: Publish to npm
         env:

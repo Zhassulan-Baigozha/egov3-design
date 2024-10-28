@@ -1,6 +1,6 @@
 {
   "name": "@egov3/system-design",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "type": "module",
   "main": "index.tsx",
   "private": false,

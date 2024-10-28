@@ -26,8 +26,7 @@ jobs:
         run: yarn install
 
       - name: Increment version
-        run: |
-          yarn version --patch --no-git-tag-version
+        run: yarn version --patch --no-git-tag-version
 
       - name: Check PERSONAL_TOKEN
         run: |
@@ -52,7 +51,9 @@ jobs:
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          if [ "$(jq -r '.private' package.json)" != "true" ]; then
-            yarn publish --non-interactive --access public
-          fi
+        run: yarn publish --non-interactive --access public
+
+      - name: Publish to GitHub Packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        run: yarn publish --non-interactive --registry https://npm.pkg.github.com

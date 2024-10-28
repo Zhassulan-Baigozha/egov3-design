@@ -7,6 +7,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zhassulan-Baigozha/egov3-design.git"
+  },
   "scripts": {
     "lint": "next lint",
     "test": "jest",

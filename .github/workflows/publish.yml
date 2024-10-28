@@ -3,7 +3,7 @@ name: Publish to npm
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   publish:
@@ -16,11 +16,29 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'  # Укажите версию Node.js
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org/'
 
       - name: Install dependencies
         run: yarn install
+
+      - name: Increment version
+        run: |
+          CURRENT_VERSION=$(jq -r '.version' package.json)
+          echo "Current version is $CURRENT_VERSION"
+          yarn version --patch --no-git-tag-version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit updated package.json
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "ci: bump version to $(jq -r '.version' package.json)"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to npm
         env:

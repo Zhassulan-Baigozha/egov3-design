@@ -1,4 +1,4 @@
-name: Publish to npm and GitHub Packages
+name: Publish to npm
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write # Ensure write permissions for repository contents
+      contents: write
 
     steps:
       - name: Checkout code
@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "20"
-          registry-url: "https://registry.npmjs.org/" # Set npm registry for Node setup
+          registry-url: "https://registry.npmjs.org/"
 
       - name: Install dependencies
         run: yarn install
@@ -55,12 +55,4 @@ jobs:
         run: |
           if [ "$(jq -r '.private' package.json)" != "true" ]; then
             yarn publish --non-interactive --access public
-          fi
-
-      - name: Publish to GitHub Packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-        run: |
-          if [ "$(jq -r '.private' package.json)" != "true" ]; then
-            yarn publish --non-interactive --registry https://npm.pkg.github.com
           fi

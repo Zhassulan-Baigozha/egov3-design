@@ -9,7 +9,7 @@ import { ClearIcon } from "~svg";
 
 export type TOtpType = "OTP" | "TEXT";
 
-interface IInputFieldProps {
+export interface IInputFieldProps {
   onFocus?: () => void;
   onBlur?: () => void;
   onEnterPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;

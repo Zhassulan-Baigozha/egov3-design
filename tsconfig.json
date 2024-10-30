@@ -7,7 +7,7 @@
     "baseUrl": "./",
     "paths": {
       "~utils/*": ["./src/utils/*"],
-      "~baseComponents": ["./src/baseComponents/index"],
+      "~components": ["./src/components/index"],
       "~svg": ["./src/svg/index"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -25,6 +25,14 @@
     "incremental": true,
     "plugins": [{ "name": "next" }]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src", "@types"],
+  "include": [
+    "src",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.css",
+    ".next/types/**/*.ts",
+    "@types"
+  ],
   "exclude": ["node_modules", "__tests__", "src/stories", "dist"]
 }

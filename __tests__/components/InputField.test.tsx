@@ -2,12 +2,12 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import { InputField } from "~baseComponents";
+import { Components } from "~components";
 
 describe("InputField", () => {
   it("(1) Should render without crashing", () => {
     const { getByPlaceholderText } = render(
-      <InputField
+      <Components.InputField
         id={"testRenderId"}
         labelText={""}
         ariaLabel={"test ariaLabel"}
@@ -19,7 +19,7 @@ describe("InputField", () => {
   it("(2) Should render with the correct placeholder", () => {
     const placeholder = "Enter text";
     const { getByPlaceholderText } = render(
-      <InputField
+      <Components.InputField
         id={"testPlaceholderId"}
         labelText={""}
         ariaLabel={"test ariaLabel"}
@@ -33,7 +33,7 @@ describe("InputField", () => {
     const onFocus = jest.fn();
     const onBlur = jest.fn();
     const { getByPlaceholderText } = render(
-      <InputField
+      <Components.InputField
         id={"testOnBlurId"}
         labelText={""}
         ariaLabel={"test ariaLabel"}
@@ -52,7 +52,7 @@ describe("InputField", () => {
   it("(4) Should render inputLeftIcon if provided", () => {
     const leftIcon = <span data-testid="left-icon">Icon</span>;
     const { getByTestId } = render(
-      <InputField
+      <Components.InputField
         id={"testLeftId"}
         labelText={""}
         ariaLabel={"test ariaLabel"}
@@ -66,7 +66,7 @@ describe("InputField", () => {
     const onChange = jest.fn();
     const value = "test value";
     const { getByPlaceholderText, getByTestId } = render(
-      <InputField
+      <Components.InputField
         id={"testId"}
         labelText={""}
         ariaLabel={"test ariaLabel"}
@@ -87,7 +87,7 @@ describe("InputField", () => {
 
   it("(6) Should apply focused class on focus", () => {
     const { getByPlaceholderText, container } = render(
-      <InputField
+      <Components.InputField
         id={"testFocusedId"}
         labelText={""}
         ariaLabel={"test ariaLabel"}

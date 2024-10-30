@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Build project
+        run: yarn build
+
       - name: Increment version
         run: yarn version --patch --no-git-tag-version
 
@@ -40,7 +43,7 @@ jobs:
         run: |
           git ls-remote https://Zhassulan-Baigozha:${{ secrets.PERSONAL_TOKEN }}@github.com/Zhassulan-Baigozha/egov3-design.git
         env:
-          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }} # Use GITHUB_TOKEN for repo access
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
       - name: Commit updated package.json
         run: |

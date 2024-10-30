@@ -39,3 +39,5 @@ yarn-error.log*
 out
 
 *storybook.log
+
+dist

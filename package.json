@@ -2,7 +2,8 @@
   "name": "@egov3/system-design",
   "version": "1.0.14",
   "type": "module",
-  "main": "index.tsx",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -12,12 +13,13 @@
     "url": "https://github.com/Zhassulan-Baigozha/egov3-design.git"
   },
   "scripts": {
+    "build": "tsc --project tsconfig.json",
     "lint": "next lint",
     "test": "jest",
     "test:unit:update": "jest -u",
     "test:unit:coverage": "jest --coverage",
     "lint-staged": "lint-staged",
-    "type-check": "tsc --project tsconfig.json --pretty --noEmit && echo ",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit && echo",
     "prepare": "cross-env NODE_ENV=development yarn prepare:dev",
     "prepare:dev": "husky install",
     "storybook": "storybook dev -p 6006",
@@ -58,8 +60,8 @@
     "@testing-library/react": "^14.3.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^20.11.19",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "@types/react-test-renderer": "^18.0.7",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
@@ -79,7 +81,8 @@
     "npm-check-updates": "^16.14.18",
     "prettier": "^3.2.5",
     "react-test-renderer": "^18.2.0",
-    "sass": "^1.75.0",
+    "sass": "^1.80.5",
+    "sass-loader": "^16.0.2",
     "storybook": "^8.0.8",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.0"

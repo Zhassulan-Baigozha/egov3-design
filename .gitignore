@@ -7,7 +7,9 @@
 .yarn/install-state.gz
 
 # testing
-/coverage
+/coverage/lcov-report
+/coverage/coverage-final.json
+/coverage/clover.xml
 
 # next.js
 /.next/
@@ -39,4 +41,3 @@ yarn-error.log*
 out
 
 *storybook.log
-
